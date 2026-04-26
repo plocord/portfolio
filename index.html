@@ -5,20 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>plocord</title>
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .page { display: none; }
+    .page.active { display: block; }
+  </style>
 </head>
 <body>
 
+<!-- INTRO SCREEN -->
+<div id="intro" style="
+  position: fixed; inset: 0;
+  background: #141414;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 999;
+">
+  <p style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #777; letter-spacing: 0.1em;">
+    click to exorcise the curse of intro screens.
+  </p>
+</div>
+
+<audio id="bg-music" src="Important/green.mp3" loop></audio>
+
+<!-- NAV -->
 <nav>
-  <a class="logo" href="index.html">plocord_</a>
+  <a class="logo" href="#" onclick="go('home')">plocord_</a>
   <ul class="nav-links">
-    <li><a href="about.html">about</a></li>
-    <li><a href="work.html">work</a></li>
-    <li><a href="skills.html">skills</a></li>
-    <li><a href="contact.html">contact</a></li>
+    <li><a href="#" onclick="go('about')" id="nav-about">about</a></li>
+    <li><a href="#" onclick="go('work')"  id="nav-work">work</a></li>
+    <li><a href="#" onclick="go('skills')" id="nav-skills">skills</a></li>
+    <li><a href="#" onclick="go('contact')" id="nav-contact">contact</a></li>
   </ul>
 </nav>
 
-<main>
+<!-- HOME -->
+<main class="page active" id="page-home">
   <p class="prompt fade fade-1">~/home <span>$</span> whoami</p>
 
   <h1 class="fade fade-2">
@@ -27,27 +47,217 @@
   </h1>
 
   <p class="sub fade fade-3">
-    Intern sysadmin. Networks, linux, firewalls.
+    intern sysadmin. networks, linux, firewalls.
     relearning everything currently.
     also in a cinema club, life is varied.
   </p>
 
   <div class="cta-row fade fade-4">
-    <a href="work.html" class="btn btn-solid">see my stack</a>
-    <a href="contact.html" class="btn btn-ghost">say hello</a>
+    <a href="#" onclick="go('work')" class="btn btn-solid">see my stack</a>
+    <a href="#" onclick="go('contact')" class="btn btn-ghost">say hello</a>
   </div>
 
   <hr class="rule" style="margin-top: 4rem;" />
 
-  <p class="fade" style="font-size:12px; color: #717171; animation-delay:.35s;">
-    Locked in for RHCSA, hope I make it 🙏
+  <p class="fade" style="font-size:13px; color:#717171; animation-delay:.35s;">
+    locked in for RHCSA, hope I make it 🙏
   </p>
 </main>
 
+<!-- ABOUT -->
+<main class="page" id="page-about">
+  <p class="page-label fade fade-1">// about</p>
+
+  <div class="about-grid">
+    <div class="about-text fade fade-2">
+      <p>
+        i go by <span class="highlight">plocord</span>, aka saint.
+        based in the earth, currently interning as a sysadmin at a secret org :) —
+        mostly self-directed, figuring things out as i go.
+      </p>
+      <p>
+          Certified Cisco Network Associate (CCNA) with a background in networking and
+          systems administration. Currently expanding my expertise in Linux and Red Hat
+          technologies, with a focus on achieving RHCSA certification.
+      </p>
+      <p>
+        i've touched a lot: cisco gear, linux servers, firewalls, windows server,
+        a bit of devops. right now i'm going back to basics and relearning
+        everything properly. next stop: <span class="highlight">RHCSA</span>.
+      </p>
+      <p>
+        outside of tech — i'm in a cinema club (film screenings, light editing),
+        i play deltarune and yes, it's way better than undertale imo.
+      </p>
+
+      
+    </div>
+
+    <div class="facts fade fade-3">
+      <div class="fact"><span class="fact-key">alias</span><span class="fact-val">plocord / saint</span></div>
+      <div class="fact"><span class="fact-key">location</span><span class="fact-val">somewhere, earth</span></div>
+      <div class="fact"><span class="fact-key">role</span><span class="fact-val">sysadmin intern (part time soon)</span></div>
+      <div class="fact"><span class="fact-key">studying</span><span class="fact-val">university + RHCSA prep</span></div>
+      <div class="fact"><span class="fact-key">cert goal</span><span class="fact-val">RHCSA</span></div>
+      <div class="fact"><span class="fact-key">side stuff</span><span class="fact-val">tech support at cinema club</span></div>
+      <div class="fact"><span class="fact-key">watching</span><span class="fact-val">you</span></div>
+      <div class="fact"><span class="fact-key">status</span><span class="fact-val">open to collabs :) (i dont code)</span></div>
+    </div>
+  </div>
+</main>
+
+<!-- WORK -->
+<main class="page" id="page-work">
+  <p class="page-label fade fade-1">// work</p>
+
+  <div class="projects fade fade-2">
+    <div class="project">
+      <span class="proj-tag">internship</span>
+      <span class="proj-name">sysadmin intern — company is a secret :)</span>
+      <span class="proj-year">2026–now</span>
+    </div>
+    <div class="project">
+      <span class="proj-tag">film club</span>
+      <span class="proj-name">cinema club in my uni — member, light tech & editing work</span>
+      <span class="proj-year">2025–now</span>
+    </div>
+  </div>
+
+  <p class="fade" style="font-size:13px; color:#717171; margin-top:2.5rem; animation-delay:.3s;">
+    early career. more incoming.
+  </p>
+</main>
+
+<!-- SKILLS -->
+<main class="page" id="page-skills">
+  <p class="page-label fade fade-1">// skills</p>
+
+  <div class="skills-grid fade fade-2">
+    <div class="skill-group">
+      <h3>networking</h3>
+      <ul class="skill-list">
+        <li>Cisco routers & switches</li>
+        <li>Cisco ASA firewall</li>
+        <li>Fortigate</li>
+        <li>Cisco phones & UC</li>
+        <li>Cisco Certified (CCNA)</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>linux</h3>
+      <ul class="skill-list">
+        <li>Ubuntu</li>
+        <li>Red Hat administration</li>
+        <li>Red Hat engineering</li>
+        <li>Active Directory (basics)</li>
+        <li>RHCSA — in progress</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>windows</h3>
+      <ul class="skill-list">
+        <li>Windows Server 2016</li>
+        <li>Windows client admin</li>
+        <li>Active Directory</li>
+        <li>Group Policy basics</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>devops & tools</h3>
+      <ul class="skill-list">
+        <li>Docker</li>
+        <li>Ansible</li>
+        <li>GitLab</li>
+        <li>MySQL</li>
+        <li>Git</li>
+        <li>CI/CD basics</li>
+        <li>Kubernetes</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>other</h3>
+      <ul class="skill-list">
+        <li>video editing (light)</li>
+        <li>self-directed learning</li>
+        <li>not giving up (improving) (lies)</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="rule" />
+  <p class="fade" style="font-size:13px; color:#717171; animation-delay:.3s;">
+    relearning actively. list will grow.
+  </p>
+</main>
+
+<!-- CONTACT -->
+<main class="page" id="page-contact">
+  <p class="page-label fade fade-1">// contact</p>
+
+  <div class="contact-grid">
+    <div class="fade fade-2">
+      <p class="contact-text">
+        got a collab idea? want to talk linux, networking, or anime?
+        drop me a line — i reply.
+      </p>
+
+      <div class="contact-links">
+       <a class="contact-link"><span>Discord: zwbu</span></a>
+        <a class="contact-link" href="https://github.com/plocord">
+          <span>github</span><span class="arr">→</span>
+        </a>
+      </div>
+
+      <p style="font-size:13px; color:#555; margin-top:1.5rem;">
+        IM VERY SOCIAL PLS TEXT ME PLS PLS PLS
+      </p>
+    </div>
+
+    <div class="form fade fade-3">
+      <input class="inp" type="text" placeholder="your name" />
+      <input class="inp" type="email" placeholder="your email" />
+      <textarea class="inp ta" placeholder="what's up?"></textarea>
+      <button class="btn btn-solid" style="align-self:flex-start;">send it →</button>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
 <footer>
-  <span>plocord — baku, az</span>
-  <span>~/home</span>
+  <span>plocord — pro ;)</span>
+  <span id="footer-path">~/home</span>
 </footer>
+
+<script>
+  const pages = ['home', 'about', 'work', 'skills', 'contact'];
+
+  function go(id) {
+    pages.forEach(p => {
+      document.getElementById('page-' + p).classList.toggle('active', p === id);
+      const nav = document.getElementById('nav-' + p);
+      if (nav) nav.classList.toggle('active', p === id);
+    });
+    document.getElementById('footer-path').textContent = '~/' + id;
+    window.scrollTo(0, 0);
+
+    // re-trigger fade animations
+    document.querySelectorAll('#page-' + id + ' .fade').forEach((el, i) => {
+      el.style.animation = 'none';
+      el.offsetHeight; // reflow
+      el.style.animation = '';
+    });
+
+    return false;
+  }
+
+  // intro + music
+  document.getElementById('intro').addEventListener('click', function() {
+    this.style.opacity = '0';
+    this.style.transition = 'opacity 0.8s ease';
+    setTimeout(() => this.remove(), 800);
+    document.getElementById('bg-music').play();
+  });
+</script>
 
 </body>
 </html>
