@@ -360,3 +360,26 @@ h1 em {
   .project { grid-template-columns: 1fr; gap: 0.25rem; }
   .proj-year { display: none; }
 }
+
+.dancer-left {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 140px;
+}
+.dancer-right {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 180px;
+}
+
+.dancer-left  { left: 70px; }
+.dancer-right { right: 70px; }
+
+@media (max-width: 1100px) {
+  .dancer-left,
+  .dancer-right {
+    display: none;
+  }
+}
